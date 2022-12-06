@@ -36,7 +36,7 @@ function Login() {
   });
 
   return (
-    <div>
+    <div className="container">
       <img src={TwitterLogo} alt="Logo" style={{width: "50px"}} className="logo" />
       <h3>Log In to Twitter</h3>
       <Formik
