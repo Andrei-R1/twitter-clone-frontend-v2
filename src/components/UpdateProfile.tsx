@@ -144,8 +144,8 @@ function UpdateProfile() {
             <Field name="website" type="text" placeholder="Website" />
             <ErrorMessage name="website" component={"div"} />
 
-            <button type="submit" className="login-button">
-              <span>Update Profile</span>
+            <button onClick={openModal} className="edit-button">
+              Edit Profile
             </button>
           </Form>
         </Formik>
