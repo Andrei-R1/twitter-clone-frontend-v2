@@ -85,7 +85,9 @@ export default function AllTweets() {
                 }}
                 alt="avatar"
               />
-              <h4 className="name">{tweet.author.name} </h4>
+              <Link to={`/user/${tweet.author.id}`}>
+                <h4 className="name">{tweet.author.name} </h4>
+              </Link>
               <p className="date-time">
                 {formatDistance(
                   subDays(new Date(tweet.createdAt), 0),

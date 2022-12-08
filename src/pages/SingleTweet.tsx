@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import CreateReply from "../components/CreateReply";
 import LeftNav from "../components/LeftNav";
 import PopularTweets from "../components/PopularTweets";
 import "../styles/home.css";
@@ -81,6 +82,7 @@ function SingleTweet() {
               display: "grid",
               gridTemplateColumns: "1fr 1fr 8fr",
               marginTop: "10px",
+              marginLeft: "10px",
             }}
           >
             <img
@@ -113,16 +115,29 @@ function SingleTweet() {
                   display: "grid",
                   gridTemplateColumns: "1fr 1fr 8fr",
                   marginTop: "10px",
+                  marginLeft: "10px",
                 }}
               >
                 <img
                   src={comment.user.profile?.avatar}
-                  style={{ width: "40px", height: "40px", borderRadius: "50%", objectFit: "cover" }}
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                  }}
                   alt="avatar"
                 />
                 <h5>{comment.user.name}</h5>
               </div>
               <p>{comment.content}</p>
+              <CreateReply
+                name={comment.user.name}
+                avatar={comment.user.profile?.avatar}
+                id={data.tweet.id}
+                comment={comment.content}
+                commentId={comment.id}
+              />
             </>
           ))}
         </div>

@@ -15,6 +15,7 @@ import IsAuthenticated from "./components/IsAuthenticated";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import SingleTweet from "./pages/SingleTweet";
+import SingleUser from "./pages/SingleUser";
 
 const httpLink = new HttpLink({ uri: "http://localhost:4000" });
 const authLink = setContext(async (req, { headers }) => {
@@ -42,6 +43,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Home/>} />     
             <Route path="/tweet/:id" element={<SingleTweet/>} />
+            <Route path="user/:id" element={<SingleUser/>} />
           </Route>
           <Route path="/landing" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />
