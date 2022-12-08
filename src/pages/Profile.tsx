@@ -31,7 +31,9 @@ function Profile() {
   return (
     <>
       <div className="primary">
-        <div className="left"><LeftNav></LeftNav></div>
+        <div className="left">
+          <LeftNav></LeftNav>
+        </div>
         <div className="profile">
           <div className="profile-info">
             <div className="profile-head">
@@ -43,7 +45,15 @@ function Profile() {
               </span>
             </div>
             <div className="avatar">
-              <i className="fa fa-user fa-5x" aria-hidden="true"></i>
+              {data.me.profile.avatar ? (
+                <img
+                  src={data.me.profile.avatar}
+                  style={{ width: "150px", height: "150px" , borderRadius: "50%" }}
+                  alt="avatar"
+                />
+              ) : (
+                <i className="fa fa-user fa-5x" aria-hidden="true"></i>
+              )}
             </div>
             <div className="make-profile">
               {data.me.profile ? <UpdateProfile /> : <CreateProfile />}
