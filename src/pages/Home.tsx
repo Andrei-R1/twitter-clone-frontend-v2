@@ -3,6 +3,7 @@ import React from "react"
 import AllTweets from "../components/AllTweets"
 import HomePageTweet from "../components/HomePageTweet"
 import LeftNav from "../components/LeftNav"
+import PopularTweets from "../components/PopularTweets"
 import "../styles/home.css"
 import "../styles/primary.css"
 
@@ -41,8 +42,7 @@ function Home() {
             </div>
         </div>
         <div className="right">
-          Right
-          {/* <PopularNetworks /> */}
+          <PopularTweets/>
         </div>
       </div>
     </>
