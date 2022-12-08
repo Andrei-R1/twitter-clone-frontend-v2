@@ -45,10 +45,10 @@ function Profile() {
               </span>
             </div>
             <div className="avatar">
-              {data.me.profile.avatar ? (
+              {data.me.profile?.avatar ? (
                 <img
                   src={data.me.profile.avatar}
-                  style={{ width: "150px", height: "150px" , borderRadius: "50%" }}
+                  style={{ width: "150px", height: "150px" , borderRadius: "50%", objectFit: "cover"}}
                   alt="avatar"
                 />
               ) : (
