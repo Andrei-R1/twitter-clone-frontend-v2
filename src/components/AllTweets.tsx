@@ -2,8 +2,10 @@ import { gql, useQuery } from "@apollo/client";
 import { formatDistance } from "date-fns";
 import { subDays } from "date-fns/esm";
 import React from "react";
+import { Link } from "react-router-dom";
 import { ME_QUERY } from "../pages/Profile";
 import "../styles/allTweets.css";
+import CreateComment from "./CreateComment";
 import DeleteLike from "./DeleteLike";
 import LikeTweet from "./LikeTweet";
 
@@ -14,6 +16,9 @@ export const TWEETS_QUERY = gql`
       createdAt
       content
       likes {
+        id
+      }
+      comments {
         id
       }
       author {
@@ -47,6 +52,7 @@ export default function AllTweets() {
     content: string;
     createdAt: Date;
     likes: [];
+    comments: [];
     author: {
       id: number;
       name: string;
@@ -67,27 +73,29 @@ export default function AllTweets() {
     <div>
       {data.tweets.map((tweet: AllTweets) => (
         <div className="tweet-container">
-          <div className="tweet-header">
-            <img
-              src={tweet.author.profile.avatar}
-              style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
-              alt="avatar"
-            />
-            <h4 className="name">{tweet.author.name} </h4>
-            <p className="date-time">
-              {formatDistance(
-                subDays(new Date(tweet.createdAt), 0),
-                new Date()
-              )}{" "}
-              ago
-            </p>
-          </div>
-          <p>{tweet.content}</p>
+          <Link to={`/tweet/${tweet.id}`}>
+            <div className="tweet-header">
+              <img
+                src={tweet.author.profile?.avatar}
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                }}
+                alt="avatar"
+              />
+              <h4 className="name">{tweet.author.name} </h4>
+              <p className="date-time">
+                {formatDistance(
+                  subDays(new Date(tweet.createdAt), 0),
+                  new Date()
+                )}{" "}
+                ago
+              </p>
+            </div>
+            <p>{tweet.content}</p>
+          </Link>
           <div className="likes">
             {meData.me.likedTweet
               .map((t: LikedTweets) => t.tweet.id)
@@ -108,6 +116,15 @@ export default function AllTweets() {
                 {tweet.likes.length}
               </span>
             )}
+            <span style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+              <CreateComment
+                avatar={tweet.author.profile?.avatar}
+                name={tweet.author.name}
+                tweet={tweet.content}
+                id={tweet.id}
+              />
+              {tweet.comments.length > 0 ? tweet.comments.length : null}
+            </span>
           </div>
         </div>
       ))}
