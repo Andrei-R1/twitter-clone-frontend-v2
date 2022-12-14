@@ -6,7 +6,6 @@ import {
 } from "@apollo/client";
 import React from "react";
 import "./App.css";
-import Users from "./components/Users";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Landing from "./components/Landing";
 import { setContext } from "apollo-link-context";
@@ -14,6 +13,9 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import IsAuthenticated from "./components/IsAuthenticated";
 import Profile from "./pages/Profile";
+import Home from "./pages/Home";
+import SingleTweet from "./pages/SingleTweet";
+import SingleUser from "./pages/SingleUser";
 
 const httpLink = new HttpLink({ uri: "http://localhost:4000" });
 const authLink = setContext(async (req, { headers }) => {
@@ -39,7 +41,9 @@ function App() {
         <Routes>
           <Route element={<IsAuthenticated/>} >
             <Route path="/profile" element={<Profile />} />
-            <Route path="/users" element={<Users />} />           
+            <Route path="/" element={<Home/>} />     
+            <Route path="/tweet/:id" element={<SingleTweet/>} />
+            <Route path="user/:id" element={<SingleUser/>} />
           </Route>
           <Route path="/landing" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />

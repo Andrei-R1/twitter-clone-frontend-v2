@@ -3,8 +3,9 @@
   border: 1px solid var(--accent);
 }
 .nickname {
-  margin-top: -15px;
+  /* margin-top: -15px; */
   margin-bottom: 30px;
+  margin-top: 5px;
 }
 
 a {
@@ -37,13 +38,11 @@ a {
 .likes {
   grid-column: 1;
 }
-
 .back-arrow {
   margin: 10px;
   color: var(--main-color);
-  margin-top: 20;
+  margin-top: 10;
 }
-
 .date {
   color: var(--accent);
   position: absolute;
@@ -57,7 +56,6 @@ a {
   font-size: 18px;
   cursor: pointer;
 }
-
 .profile-head {
   /* width: 105%; */
   display: grid;
@@ -65,7 +63,6 @@ a {
   border-bottom: 1px var(--accent);
   margin-left: -20px;
 }
-
 .edit-button {
   padding: 10px;
   padding-left: 20px;
@@ -83,7 +80,6 @@ a {
 .edit-button:focus {
   outline: none;
 }
-
 .followers {
   display: grid;
   grid-template-columns: 3fr 3fr 6fr;
