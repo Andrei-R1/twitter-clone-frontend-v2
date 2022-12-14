@@ -37,9 +37,13 @@ function Login() {
   });
 
   return (
+    <div className="maincontainer">
+    <div className="container1">           
+    <img src="https://i.pinimg.com/originals/0a/bb/e4/0abbe4df553289cad941a290bef03fd1.jpg" alt="Logo" style={{width: "400px"}} className="logo" />
+          
+    <h5 className="h5">Welcome to Twitter</h5></div>
     <div className="container">
-      <img src={TwitterLogo} alt="Logo" style={{width: "50px"}} className="logo" />
-      <h3>Log In to Twitter</h3>
+    
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -54,18 +58,24 @@ function Login() {
         }}
       >
         <Form>
+          <img src={TwitterLogo} alt="Logo" style={{width: "80px"}}   className="logo1" /> 
+          <h5 className="log">Log in to Twitter</h5>
           <Field name="email" type="email" placeholder="Email" />
-          <ErrorMessage name="email" component={"div"} />
+          <ErrorMessage name="email" component={"div"} className="error"/>
           <Field name="password" type="password" placeholder="Password" />
-          <ErrorMessage name="password" component={"div"} />
-          <button type="submit" className="login-button"><span>Login</span></button>
+          <ErrorMessage name="password" component={"div"} className="error" />
+          <button type="submit" className="login-button"><span>Login</span></button> 
+         
+          <div className="register">
+          <h3 style={{color: "#fff", fontSize: "12px", marginTop: "10px", marginBottom:"20px"}}>Don't have an account?</h3>
+          <Link className="h51" to="/signup">Sign up</Link>
+          </div>
         </Form>
       </Formik>
-      <div className="register">
-        <h4>Don't have an account?</h4>
-        <Link to="/signup">Sign up</Link>
-      </div>
+     
+    </div> 
     </div>
+    
   );
 }
 
